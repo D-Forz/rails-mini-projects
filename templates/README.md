@@ -7,7 +7,7 @@ The following templates have been made for Ruby and Ruby on Rails 7.
 ```bash
   rails new \
   -d postgresql \
-  -m https://raw.githubusercontent.com/D-Forz/rails-mini-projects/master/templates/minimal.rb \
+  -m https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/minimal.rb \
   myapp
 ```
 ## Usage for ruby template
