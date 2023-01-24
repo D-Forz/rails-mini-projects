@@ -4,7 +4,7 @@ run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"
 # README
 ########################################
 markdown_file_content = <<~MARKDOWN
-  Rails app generated with [minimal](https://github.com/D-Forz/rails-mini-projects/templates)
+  Rails app generated with [minimal](https://github.com/D-Forz/ruby-projects/templates)
 MARKDOWN
 
 file "README.md", markdown_file_content, force: true
@@ -17,10 +17,6 @@ inject_into_file "Gemfile", after: "platforms: %i[ mri mingw x64_mingw ]\n" do
   gem 'factory_bot_rails'
   RUBY
 end
-# gem_group :development, :test do
-#   gem "rspec-rails"
-#   gem 'factory_bot_rails'
-# end
 
 after_bundle do
   # Generators: db + rspec + pages controller
@@ -69,7 +65,7 @@ after_bundle do
 
   # Rubocop
   ########################################
-  run "curl -L https://raw.githubusercontent.com/D-Forz/rails-mini-projects/master/templates/.rubocop.yml > .rubocop.yml"
+  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.rubocop.yml > .rubocop.yml"
 
   # Git
   ########################################
