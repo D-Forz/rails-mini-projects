@@ -9,6 +9,6 @@ namespace :app do
     sh "touch app.rb"
     sh "git init"
     sh "echo 'Gemfile.lock' >> .gitignore"
-    sh "git add . :^Gemfile.lock && git commit -m 'Initial commit'"
+    sh "git add . && git commit -m 'Initial commit'"
   end
 end
