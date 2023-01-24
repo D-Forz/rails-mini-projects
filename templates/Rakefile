@@ -1,0 +1,11 @@
+
+namespace :app do
+  desc "Create a new app"
+
+  task :init do
+    sh "bundle init"
+    sh "bundle add rspec"
+    sh "rspec --init"
+    sh "touch app.rb"
+  end
+end
