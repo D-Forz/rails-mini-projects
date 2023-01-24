@@ -7,5 +7,8 @@ namespace :app do
     sh "bundle add rspec"
     sh "rspec --init"
     sh "touch app.rb"
+    sh "git init"
+    sh "echo 'Gemfile.lock' >> .gitignore"
+    sh "git add . :^Gemfile.lock && git commit -m 'Initial commit'"
   end
 end
