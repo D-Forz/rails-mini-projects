@@ -1,12 +1,19 @@
-# Minimal Template
+# Templates
 
-The following template have been made for Rails 7. It is a minimal template that can be used to start a new project with RSpec and Factory Bot.
+The following templates have been made for Ruby and Ruby on Rails 7.
 
-## Usage
+## Usage for rails template
 
 ```bash
   rails new \
   -d postgresql \
   -m https://raw.githubusercontent.com/D-Forz/rails-mini-projects/master/templates/minimal.rb \
   myapp
+```
+## Usage for ruby template
+Be sure to have the rake gem installed, and run this command in the root of your project.
+
+```bash
+  curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/Rakefile > Rakefile
+  rake app:init
 ```
