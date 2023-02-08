@@ -8,7 +8,7 @@ AllCops:
     - 'script/**/*'
     - 'support/**/*'
     - 'tmp/**/*'
-    - 'test/**/*'
+    - 'spec/**/*'
 
 Style/ConditionalAssignment:
   Enabled: false

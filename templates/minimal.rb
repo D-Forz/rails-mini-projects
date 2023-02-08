@@ -4,7 +4,7 @@ run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"
 # README
 ########################################
 markdown_file_content = <<~MARKDOWN
-  Rails app generated with [minimal](https://github.com/D-Forz/ruby-projects/templates)
+  Rails app generated with [minimal](https://github.com/D-Forz/ruby-projects/tree/master/templates)
 MARKDOWN
 
 file "README.md", markdown_file_content, force: true
