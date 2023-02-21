@@ -87,8 +87,8 @@ after_bundle do # rubocop:disable Metrics/BlockLength
   # Github Actions
   ########################################
   run "mkdir -p .github/workflows"
-  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.github/workflows/.lint.yml > .github/workflows/.lint.yml"
-  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.github/workflows/.tests.yml > .github/workflows/.tests.yml"
+  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/.github/workflows/.lint.yml > .github/workflows/.lint.yml"
+  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/.github/workflows/.tests.yml > .github/workflows/.tests.yml"
 
   # Git
   ########################################
