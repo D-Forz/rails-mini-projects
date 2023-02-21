@@ -1,3 +1,6 @@
+require:
+  - rubocop-rails
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -6,37 +9,28 @@ AllCops:
     - 'config/**/*'
     - 'node_modules/**/*'
     - 'script/**/*'
-    - 'support/**/*'
     - 'tmp/**/*'
     - 'spec/**/*'
+    - 'vendor/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'config.ru'
 
-Style/ConditionalAssignment:
-  Enabled: false
-Style/StringLiterals:
-  Enabled: false
-Style/RedundantReturn:
-  Enabled: false
 Style/Documentation:
+  Description: 'Checks for missing top-level class and module documentation.'
   Enabled: false
-Style/WordArray:
-  Enabled: false
-Metrics/AbcSize:
-  Enabled: false
-Style/MutableConstant:
-  Enabled: false
-Style/SignalException:
-  Enabled: false
-Metrics/CyclomaticComplexity:
-  Enabled: false
-Style/MissingRespondToMissing:
-  Enabled: false
-Lint/MissingSuper:
+Style/InlineComment:
+  Description: 'Avoid inline comments.'
   Enabled: false
 Style/FrozenStringLiteralComment:
+  Description: 'Add the frozen string literal comment to the top of files.'
   Enabled: false
-Layout/LineLength:
-  Max: 120
+Style/ClassAndModuleChildren:
+  Description: 'Checks style of children classes and modules.'
+  Enabled: false
 Style/EmptyMethod:
+  Description: 'Avoid empty methods.'
   Enabled: false
-Bundler/OrderedGems:
+Style/StringLiterals:
+  Description: 'Checks if uses of quotes match the configured preference.'
   Enabled: false

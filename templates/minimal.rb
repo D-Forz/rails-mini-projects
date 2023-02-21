@@ -13,12 +13,17 @@ file "README.md", markdown_file_content, force: true
 ########################################
 inject_into_file "Gemfile", after: "platforms: %i[ mri mingw x64_mingw ]\n" do
   <<-RUBY
-  gem "rspec-rails"
+  gem "annotate"
   gem 'factory_bot_rails'
+  gem 'rubocop-rails', require: false
+  gem 'erb_lint', require: false
+
+  gem "rspec-rails"
+  gem "shoulda-matchers"
   RUBY
 end
 
-after_bundle do
+after_bundle do # rubocop:disable Metrics/BlockLength
   # Generators: db + rspec + pages controller
   ########################################
   rails_command "db:drop db:create db:migrate"
@@ -35,6 +40,7 @@ after_bundle do
   inject_into_file "spec/rails_helper.rb", after: "require 'rspec/rails'\n" do
     <<~RUBY
       require 'support/factory_bot'
+      require 'support/shoulda_matchers'
     RUBY
   end
 
@@ -43,6 +49,15 @@ after_bundle do
 
     RSpec.configure do |config|
       config.include FactoryBot::Syntax::Methods
+    end
+  RUBY
+
+  file 'spec/support/shoulda_matchers.rb', <<~RUBY
+    Shoulda::Matchers.configure do |config|
+      config.integrate do |with|
+        with.test_framework :rspec
+        with.library :rails
+      end
     end
   RUBY
 
@@ -58,11 +73,22 @@ after_bundle do
     # Ignore Mac and Linux file system files
     *.swp
     .DS_Store
+    .Gemfile.lock
   TXT
 
-  # Rubocop
+  # Production env & github actions
+  run "bundle lock --add-platform x86_64-linux"
+
+  # Linters
   ########################################
   run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.rubocop.yml > .rubocop.yml"
+  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.erb-lint.yml > .erb-lint.yml"
+
+  # Github Actions
+  ########################################
+  run "mkdir -p .github/workflows"
+  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.github/workflows/.lint.yml > .github/workflows/.lint.yml"
+  run "curl -L https://raw.githubusercontent.com/D-Forz/ruby-projects/master/templates/.github/workflows/.tests.yml > .github/workflows/.tests.yml"
 
   # Git
   ########################################
